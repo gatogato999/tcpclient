@@ -29,15 +29,15 @@ func main() {
 
 	buffer := make([]byte, 500)
 	for {
-		n, err := tcpConnObject.Read(buffer)
+		n, readerr := tcpConnObject.Read(buffer)
 		if n > 0 {
 			fmt.Println(string(buffer[:n]))
 		}
-		if err == io.EOF {
+		if readerr == io.EOF {
 			break
 		}
-		if err != nil {
-			log.Fatal("Error reading response:", err)
+		if readerr != nil {
+			log.Fatal("Error reading response:", readerr)
 		}
 	}
 
